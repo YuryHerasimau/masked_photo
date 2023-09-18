@@ -37,20 +37,20 @@ for image in root.iter('image'):
 
         draw.polygon(points, fill=color)
 
-        # Загрузка оригинального изображения
-        photo_path = photos_folder + image_name.split('/')[-1]
-        print('photo_path :', photo_path)
-        photo = Image.open(photo_path)
+    # Загрузка оригинального изображения
+    photo_path = photos_folder + image_name.split('/')[-1]
+    print('photo_path :', photo_path)
+    photo = Image.open(photo_path)
 
-        # Наложение маски на оригинал
-        masked_photo = Image.alpha_composite(photo.convert('RGBA'), mask.convert('RGBA'))
+    # Наложение маски на оригинал
+    masked_photo = Image.alpha_composite(photo.convert('RGBA'), mask.convert('RGBA'))
 
-        # Сохранение маски на черном (?) фоне
-        mask_path = "Задание2/images/mask_" + image_id + ".png"
-        print('mask_path :', mask_path)
-        mask.save(mask_path)
+    # Сохранение маски на черном (?) фоне
+    mask_path = photos_folder + "mask_" + image_id + ".png"
+    print('mask_path :', mask_path)
+    mask.save(mask_path)
 
-        # Сохранение наложенной маски на оригинал
-        masked_photo_path = "Задание2/images/masked_photo_" + image_id + ".png"
-        print('masked_photo_path :', masked_photo_path)
-        masked_photo.save(masked_photo_path)
+    # Сохранение наложенной маски на оригинал
+    masked_photo_path = photos_folder + "masked_photo_" + image_id + ".png"
+    print('masked_photo_path :', masked_photo_path)
+    masked_photo.save(masked_photo_path)
